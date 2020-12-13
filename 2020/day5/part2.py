@@ -4,7 +4,7 @@ import math
 with open("input.txt", "r", encoding="utf-8") as g:
     data = g.read().splitlines()
 
-big = 0
+ids = []
 
 
 def take_lower(u, l) -> int:
@@ -41,7 +41,12 @@ for b in data:
             cu = take_lower(cu, cl)
 
     n = (ru * 8) + cu
-    if n > big:
-        big = n
+    ids.append(n)
 
-print(big)
+ids.sort()
+
+prev = 0
+for i in ids:
+    if(prev + 2) == i:
+        print(i - 1)
+    prev = i
